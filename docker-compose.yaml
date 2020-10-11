@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  nginx-sw8:
+    image: nginx-sw8:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    container_name: "nginx-sw8"
+    ports:
+      - "80:80"
+    networks:
+      - default
+      - bridge-network
+networks:
+  default:
+    driver: bridge
+  bridge-network:
+    external: true
